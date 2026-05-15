@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6efe6;
+  --foreground: #1c1713;
+  --card: #fffaf5;
+  --muted: #7a6b60;
+  --accent: #d24b2a;
+  --accent-2: #1f6f7a;
+  --ring: rgba(210, 75, 42, 0.4);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+body {
+  min-height: 100vh;
+  background-color: #f6efe5;
+  color: var(--foreground);
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(
+      circle at 18% 12%,
+      rgba(255, 245, 231, 0.9),
+      rgba(255, 245, 231, 0) 55%
+    ),
+    radial-gradient(
+      circle at 82% 14%,
+      rgba(210, 75, 42, 0.12),
+      rgba(210, 75, 42, 0) 58%
+    ),
+    radial-gradient(
+      circle at 10% 85%,
+      rgba(31, 111, 122, 0.16),
+      rgba(31, 111, 122, 0) 60%
+    ),
+    radial-gradient(
+      circle at 85% 86%,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0) 55%
+    );
+  opacity: 0.9;
+}
+
+.surface-card {
+  background: var(--card);
+  border: 1px solid rgba(28, 23, 19, 0.08);
+  box-shadow: 0 22px 50px rgba(28, 23, 19, 0.08);
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.display-font {
+  font-family: var(--font-display), "Times New Roman", serif;
+}
+
+.accent-ring {
+  box-shadow: 0 0 0 4px var(--ring);
+}
+
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(28, 23, 19, 0.12);
+}
+
+.glass-panel {
+  background: rgba(255, 250, 245, 0.75);
+  border: 1px solid rgba(28, 23, 19, 0.08);
+  box-shadow: 0 30px 80px rgba(28, 23, 19, 0.12);
+  backdrop-filter: blur(18px);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease both;
+}
+
+.animate-float-in {
+  animation: float-in 0.7s ease both;
+}
+
+.stagger > * {
+  animation: fade-up 0.6s ease both;
+}
+
+.stagger > *:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.stagger > *:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.stagger > *:nth-child(3) {
+  animation-delay: 0.19s;
+}
+
+.stagger > *:nth-child(4) {
+  animation-delay: 0.26s;
+}
